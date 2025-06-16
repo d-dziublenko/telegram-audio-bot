@@ -21,7 +21,7 @@ A production-ready Telegram bot that converts YouTube videos to audio files. Sim
 
 Before you begin, ensure you have the following:
 
-- Python 3.7 or higher (the bot is tested on versions 3.7 through 3.11)
+- Python 3.8 or higher (the bot is tested on versions 3.8 through 3.12)
 - pip (Python package installer)
 - A Telegram Bot Token from [@BotFather](https://t.me/botfather)
 - Docker and Docker Compose (optional, for containerized deployment)
@@ -160,7 +160,7 @@ pytest tests.py --cov=bot --cov-report=html
 
 ### Automated Testing
 
-The repository includes GitHub Actions configuration that automatically runs tests when you push changes or create pull requests. This continuous integration setup tests the bot across multiple Python versions (3.7 through 3.11) to ensure broad compatibility.
+The repository includes GitHub Actions configuration that automatically runs tests when you push changes or create pull requests. This continuous integration setup tests the bot across multiple Python versions (3.8 through 3.12) to ensure broad compatibility.
 
 ## Docker Deployment
 
@@ -258,7 +258,7 @@ For production deployments, consider the additional security measures outlined i
 First, verify your bot token is correctly set in the `.env` file. Then check that the bot is actually running by looking for log output. Finally, ensure you're messaging the correct bot in Telegram.
 
 **Module import errors:**
-Make sure your virtual environment is activated before installing dependencies. Run `pip install -r requirements.txt` again to ensure all packages are installed. Verify you're using Python 3.7 or higher with `python --version`.
+Make sure your virtual environment is activated before installing dependencies. Run `pip install -r requirements.txt` again to ensure all packages are installed. Verify you're using Python 3.8 or higher with `python --version`.
 
 **YouTube download failures:**
 YouTube frequently updates their platform, which can break download functionality. Update pytube to the latest version with `pip install --upgrade pytube`. Also check if the video is public and available in your region, as some videos have geographic or age restrictions.
