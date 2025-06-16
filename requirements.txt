@@ -1,0 +1,14 @@
+# Telegram bot framework
+pyTelegramBotAPI==4.14.0
+
+# YouTube video downloading
+pytube==15.0.0
+
+# URL validation (Django validators without full Django)
+Django==4.2.7
+
+# HTTP requests handling
+requests==2.31.0
+
+# Required for SSL/TLS connections
+certifi==2023.11.17

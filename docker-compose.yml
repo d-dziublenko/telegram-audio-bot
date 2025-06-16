@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  telegram-bot:
+    build: .
+    container_name: youtube-audio-bot
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - MAX_FILE_SIZE_MB=${MAX_FILE_SIZE_MB:-50}
+    volumes:
+      # Mount stickers directory to preserve welcome sticker
+      - ./stickers:/app/stickers:ro
+      # Optional: Mount logs directory if you want to preserve logs
+      - ./logs:/app/logs
+    # Health check to ensure bot is running
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import os, sys; sys.exit(0 if os.path.exists('/proc/1/status') else 1)",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    # Resource limits to prevent runaway processes
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
